@@ -1,0 +1,8 @@
+# Android Studio
+.idea
+*.iml
+local.properties
+
+# Gradle
+.gradle
+build

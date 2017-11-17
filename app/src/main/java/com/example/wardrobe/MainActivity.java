@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new IntentIntegrator(MainActivity.this).initiateScan();
+                new IntentIntegrator(MainActivity.this).initiateScan(IntentIntegrator.QR_CODE_TYPES);
             }
         });
     }

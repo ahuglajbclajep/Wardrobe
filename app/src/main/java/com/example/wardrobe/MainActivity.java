@@ -32,7 +32,9 @@ public class MainActivity extends CameraIntentActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
             case BottomNavigationViewListener.REQUEST_IMAGE_CAPTURE:
-                Toast.makeText(this, imageUri.toString(), Toast.LENGTH_SHORT).show();
+                if (canDeleteEmptyImage() && imageUri != null) {
+                    Toast.makeText(this, imageUri.toString(), Toast.LENGTH_SHORT).show();
+                }
                 break;
         }
     }

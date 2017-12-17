@@ -7,7 +7,8 @@ import android.os.Bundle;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
-public class StartActivity extends Activity{
+public class StartActivity extends Activity {
+    public static final String QR_CODE = "com.example.wardrobe.QR_CODE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +20,7 @@ public class StartActivity extends Activity{
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if (scanResult != null && scanResult.getContents() != null) {
-            startActivity(new Intent(this, MainActivity.class));
+            startActivity(new Intent(this, MainActivity.class).putExtra(QR_CODE, scanResult.getContents()));
         }
         finish();
     }

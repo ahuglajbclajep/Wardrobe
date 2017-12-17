@@ -16,7 +16,10 @@ public class MainActivity extends CameraIntentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle(getIntent().getStringExtra(StartActivity.QR_CODE));
+        setSupportActionBar(toolbar);
+
         ((BottomNavigationView) findViewById(R.id.navigation)).setOnNavigationItemSelectedListener(
                 new BottomNavigationViewListener(this));
     }

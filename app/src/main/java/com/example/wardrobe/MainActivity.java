@@ -7,9 +7,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.GridView;
-import android.widget.Toast;
 
 public class MainActivity extends CameraIntentActivity {
+    public static final String IMAGE_URI = "com.example.wardrobe.IMAGE_URI";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +32,8 @@ public class MainActivity extends CameraIntentActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
             case BottomNavigationViewListener.REQUEST_IMAGE_CAPTURE:
-                if (canDeleteEmptyImage() && imageUri != null) {
-                    Toast.makeText(this, imageUri.toString(), Toast.LENGTH_SHORT).show();
+                if (deleteEmptyImage() && imageUri != null) {
+                    startActivity(new Intent(this, EditActivity.class).putExtra(IMAGE_URI, imageUri));
                 }
                 break;
         }

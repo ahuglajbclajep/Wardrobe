@@ -26,7 +26,7 @@ abstract public class CameraIntentActivity extends AppCompatActivity {
         return new Intent(MediaStore.ACTION_IMAGE_CAPTURE).putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
     }
 
-    protected boolean canDeleteEmptyImage() {
+    protected boolean deleteEmptyImage() {
         File imageFile = new File(imageUri.getPath());
         if (imageFile.length() == 0) {
             imageUri = null;

@@ -98,7 +98,8 @@
                     android:id="@+id/brownCheckBox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:theme="@style/BrownCheckBox"/>
 
                 <CheckBox
                     android:id="@+id/navyCheckBox"
@@ -153,7 +154,8 @@
                 <RadioGroup
                     android:id="@+id/radioGroup"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:checkedButton="@+id/radioButton">
 
                     <RadioButton
                         android:id="@+id/radioButton"

@@ -7,8 +7,8 @@
     </style>
 
     <style name="PinkCheckBox">
-        <item name="colorControlNormal">@android:color/holo_red_light</item>
-        <item name="colorControlActivated">@android:color/holo_red_light</item>
+        <item name="colorControlNormal">@color/lightcoral</item>
+        <item name="colorControlActivated">@color/lightcoral</item>
     </style>
 
     <style name="OrangeCheckBox">
@@ -27,13 +27,18 @@
     </style>
 
     <style name="BlueCheckBox">
-        <item name="colorControlNormal">@android:color/holo_blue_bright</item>
-        <item name="colorControlActivated">@android:color/holo_blue_bright</item>
+        <item name="colorControlNormal">@android:color/holo_blue_light</item>
+        <item name="colorControlActivated">@android:color/holo_blue_light</item>
+    </style>
+
+    <style name="BrownCheckBox">
+        <item name="colorControlNormal">@color/sienna</item>
+        <item name="colorControlActivated">@color/sienna</item>
     </style>
 
     <style name="NavyCheckBox">
-        <item name="colorControlNormal">@android:color/holo_blue_dark</item>
-        <item name="colorControlActivated">@android:color/holo_blue_dark</item>
+        <item name="colorControlNormal">@color/midnightblue</item>
+        <item name="colorControlActivated">@color/midnightblue</item>
     </style>
 
     <style name="BlackCheckBox">
@@ -42,8 +47,8 @@
     </style>
 
     <style name="WhiteCheckBox">
-        <item name="colorControlNormal">@android:color/white</item>
-        <item name="colorControlActivated">@android:color/white</item>
+        <item name="colorControlNormal">@color/gainsboro</item>
+        <item name="colorControlActivated">@color/gainsboro</item>
     </style>
 
 </resources>

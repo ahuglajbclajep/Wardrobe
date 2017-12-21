@@ -21,8 +21,11 @@ public class BottomNavigationViewListener implements BottomNavigationView.OnNavi
                 if (intent != null && intent.resolveActivity(activity.getPackageManager()) != null) {
                     activity.startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
                 }
-                return true;
+                break;
+            case R.id.navigation_dashboard:
+                activity.startActivity(new Intent(activity, StartActivity.class));
+                break;
         }
-        return false;
+        return true;
     }
 }

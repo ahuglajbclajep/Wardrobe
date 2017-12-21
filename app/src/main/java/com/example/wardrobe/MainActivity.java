@@ -35,7 +35,7 @@ public class MainActivity extends CameraIntentActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
             case BottomNavigationViewListener.REQUEST_IMAGE_CAPTURE:
-                if (deleteEmptyImage() && imageUri != null) {
+                if (canReadImageUri()) {
                     startActivity(new Intent(this, EditActivity.class).putExtra(IMAGE_URI, imageUri));
                 }
                 break;

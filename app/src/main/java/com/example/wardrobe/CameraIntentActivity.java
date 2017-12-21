@@ -26,13 +26,17 @@ abstract public class CameraIntentActivity extends AppCompatActivity {
         return new Intent(MediaStore.ACTION_IMAGE_CAPTURE).putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
     }
 
-    protected boolean deleteEmptyImage() {
-        File imageFile = new File(imageUri.getPath());
-        if (imageFile.length() == 0) {
-            imageUri = null;
-            return imageFile.delete();
+    protected boolean canReadImageUri() {
+        if (imageUri != null) {
+            File imageFile = new File(imageUri.getPath());
+            if (imageFile.length() != 0) {
+                return true;
+            } else {
+                imageUri = null;
+                imageFile.delete();
+            }
         }
-        return true;
+        return false;
     }
 
     private File createImageFile() throws IOException {

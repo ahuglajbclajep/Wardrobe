@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="RedCheckBox">
+        <item name="colorControlNormal">@android:color/holo_red_dark</item>
+        <item name="colorControlActivated">@android:color/holo_red_dark</item>
+    </style>
+
+    <style name="PinkCheckBox">
+        <item name="colorControlNormal">@color/lightcoral</item>
+        <item name="colorControlActivated">@color/lightcoral</item>
+    </style>
+
+    <style name="OrangeCheckBox">
+        <item name="colorControlNormal">@android:color/holo_orange_dark</item>
+        <item name="colorControlActivated">@android:color/holo_orange_dark</item>
+    </style>
+
+    <style name="YellowCheckBox">
+        <item name="colorControlNormal">@android:color/holo_orange_light</item>
+        <item name="colorControlActivated">@android:color/holo_orange_light</item>
+    </style>
+
+    <style name="GreenCheckBox">
+        <item name="colorControlNormal">@android:color/holo_green_dark</item>
+        <item name="colorControlActivated">@android:color/holo_green_dark</item>
+    </style>
+
+    <style name="BlueCheckBox">
+        <item name="colorControlNormal">@android:color/holo_blue_light</item>
+        <item name="colorControlActivated">@android:color/holo_blue_light</item>
+    </style>
+
+    <style name="BrownCheckBox">
+        <item name="colorControlNormal">@color/sienna</item>
+        <item name="colorControlActivated">@color/sienna</item>
+    </style>
+
+    <style name="NavyCheckBox">
+        <item name="colorControlNormal">@color/midnightblue</item>
+        <item name="colorControlActivated">@color/midnightblue</item>
+    </style>
+
+    <style name="BlackCheckBox">
+        <item name="colorControlNormal">@android:color/black</item>
+        <item name="colorControlActivated">@android:color/black</item>
+    </style>
+
+    <style name="WhiteCheckBox">
+        <item name="colorControlNormal">@color/gainsboro</item>
+        <item name="colorControlActivated">@color/gainsboro</item>
+    </style>
+
+</resources>

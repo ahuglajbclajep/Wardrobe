@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.IOException;
 
 abstract public class CameraIntentActivity extends AppCompatActivity {
+    public static final int REQUEST_IMAGE_CAPTURE = 1;
     protected Uri imageUri;
 
     @Override

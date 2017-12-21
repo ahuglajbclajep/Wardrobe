@@ -34,7 +34,7 @@ public class MainActivity extends CameraIntentActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
-            case BottomNavigationViewListener.REQUEST_IMAGE_CAPTURE:
+            case CameraIntentActivity.REQUEST_IMAGE_CAPTURE:
                 if (canReadImageUri()) {
                     startActivity(new Intent(this, EditActivity.class).putExtra(IMAGE_URI, imageUri));
                 }

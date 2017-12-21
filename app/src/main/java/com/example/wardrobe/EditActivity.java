@@ -13,6 +13,7 @@ public class EditActivity extends CameraIntentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
+        getSupportActionBar().hide();
 
         Uri imageUri = getIntent().getParcelableExtra(MainActivity.IMAGE_URI);
 

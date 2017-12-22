@@ -41,4 +41,10 @@ public class EditActivity extends CameraIntentActivity {
             oldImageUri = imageUri;
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        new File(oldImageUri.getPath()).delete();
+        super.onBackPressed();
+    }
 }

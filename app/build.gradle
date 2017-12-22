@@ -21,12 +21,14 @@ android {
     }
 }
 
-task checkstyle(type: Checkstyle) {
-    checkstyle.toolVersion = '8.5'
-    ignoreFailures = true
-    configFile = file("${project.rootDir}/config/checkstyle/checkstyle.xml")
+checkstyle.toolVersion = '8.5'
+findbugs.toolVersion = '3.0.1'
 
-    source = fileTree('src/main')
+task checkstyle(type: Checkstyle) {
+    ignoreFailures = true
+    configFile = file "${rootDir}/config/checkstyle/checkstyle.xml"
+
+    source = fileTree 'src/main'
     classpath = files()
     reports {
         html.enabled = true
@@ -36,12 +38,12 @@ task checkstyle(type: Checkstyle) {
 
 task findbugs(type: FindBugs, dependsOn: assemble) {
     ignoreFailures = true
-    excludeFilter = file("${project.rootDir}/config/findbugs/exclude_filter.xml")
+    excludeFilter = file "${rootDir}/config/findbugs/exclude_filter.xml"
     jvmArgs = ['-Duser.language=en']
 
-    source = fileTree('src/main')
+    source = fileTree 'src/main'
     classpath = files()
-    classes = files('build/intermediates/classes/')
+    classes = files "${buildDir}/intermediates/classes/"
     reports {
         html.enabled = true
         xml.enabled = !html.enabled

@@ -1,7 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: 'checkstyle'
-apply plugin: 'pmd'
-apply plugin: 'findbugs'
+apply from: 'check.gradle'
 
 android {
     compileSdkVersion 27
@@ -21,45 +19,6 @@ android {
     productFlavors {
     }
 }
-
-checkstyle.toolVersion = '8.5'
-pmd.toolVersion = '6.0.0'
-findbugs.toolVersion = '3.0.1'
-
-task checkstyle(type: Checkstyle) {
-    ignoreFailures = true
-    showViolations = false
-    configFile = file "${rootDir}/config/checkstyle/checkstyle.xml"
-
-    source = fileTree 'src/main'
-    classpath = files()
-    reports.xml.enabled = false
-}
-
-task pmd(type: Pmd) {
-    ignoreFailures = true
-    ruleSets = ['java-basic', 'java-android', 'java-design']
-
-    source = fileTree 'src/main/java'
-    classpath = files()
-    reports.xml.enabled = false
-}
-
-task findbugs(type: FindBugs, dependsOn: ['compileDebugSources', 'compileReleaseSources']) {
-    ignoreFailures = true
-    excludeFilter = file "${rootDir}/config/findbugs/exclude_filter.xml"
-    jvmArgs = ['-Duser.language=en']
-
-    source = fileTree 'src/main'
-    classpath = files()
-    classes = files "${buildDir}/intermediates/classes/"
-    reports {
-        html.enabled = true
-        xml.enabled = !html.enabled
-    }
-}
-
-check.dependsOn 'checkstyle', 'pmd', 'findbugs'
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')

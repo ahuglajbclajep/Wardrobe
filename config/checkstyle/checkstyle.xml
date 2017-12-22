@@ -3,7 +3,11 @@
     "-//Puppy Crawl//DTD Check Configuration 1.3//EN"
     "http://checkstyle.sourceforge.net/dtds/configuration_1_3.dtd">
 
-<!-- from https://github.com/checkstyle/checkstyle/blob/master/src/main/resources/google_checks.xml 9766924 -->
+<!--
+    This style based on
+    https://github.com/checkstyle/checkstyle/blob/master/src/main/resources/google_checks.xml (commit 9766924).
+    Delete "Indentation" module.
+-->
 
 <module name = "Checker">
     <property name="charset" value="UTF-8"/>
@@ -150,14 +154,6 @@
                      value="GenericWhitespace ''{0}'' should followed by whitespace."/>
             <message key="ws.notPreceded"
                      value="GenericWhitespace ''{0}'' is not preceded with whitespace."/>
-        </module>
-        <module name="Indentation">
-            <property name="basicOffset" value="2"/>
-            <property name="braceAdjustment" value="0"/>
-            <property name="caseIndent" value="2"/>
-            <property name="throwsIndent" value="4"/>
-            <property name="lineWrappingIndentation" value="4"/>
-            <property name="arrayInitIndent" value="2"/>
         </module>
         <module name="AbbreviationAsWordInName">
             <property name="ignoreFinal" value="false"/>

@@ -28,6 +28,7 @@ findbugs.toolVersion = '3.0.1'
 
 task checkstyle(type: Checkstyle) {
     ignoreFailures = true
+    showViolations = false
     configFile = file "${rootDir}/config/checkstyle/checkstyle.xml"
 
     source = fileTree 'src/main'
@@ -37,8 +38,9 @@ task checkstyle(type: Checkstyle) {
 
 task pmd(type: Pmd) {
     ignoreFailures = true
+    ruleSets = ['java-basic', 'java-android', 'java-design']
 
-    source = fileTree 'src/main'
+    source = fileTree 'src/main/java'
     classpath = files()
     reports.xml.enabled = false
 }

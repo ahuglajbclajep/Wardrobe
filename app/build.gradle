@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'findbugs'
 
 android {
     compileSdkVersion 27
@@ -18,6 +19,21 @@ android {
     productFlavors {
     }
 }
+
+task findbugs(type: FindBugs) {
+    source = fileTree('src/main')
+    ignoreFailures = true
+    excludeFilter = file("${project.rootDir}/config/findbugs/exclude_filter.xml")
+
+    classes = files('build/intermediates/classes/')
+    classpath = files()
+    reports {
+        html.enabled = true
+        xml.enabled = !html.enabled
+    }
+}
+
+check.dependsOn 'findbugs'
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')

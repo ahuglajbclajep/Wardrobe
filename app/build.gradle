@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'checkstyle'
+apply plugin: 'pmd'
 apply plugin: 'findbugs'
 
 android {
@@ -22,6 +23,7 @@ android {
 }
 
 checkstyle.toolVersion = '8.5'
+pmd.toolVersion = '6.0.0'
 findbugs.toolVersion = '3.0.1'
 
 task checkstyle(type: Checkstyle) {
@@ -30,10 +32,15 @@ task checkstyle(type: Checkstyle) {
 
     source = fileTree 'src/main'
     classpath = files()
-    reports {
-        html.enabled = true
-        xml.enabled = !html.enabled
-    }
+    reports.xml.enabled = false
+}
+
+task pmd(type: Pmd) {
+    ignoreFailures = true
+
+    source = fileTree 'src/main'
+    classpath = files()
+    reports.xml.enabled = false
 }
 
 task findbugs(type: FindBugs, dependsOn: assemble) {
@@ -50,7 +57,7 @@ task findbugs(type: FindBugs, dependsOn: assemble) {
     }
 }
 
-check.dependsOn 'findbugs', 'checkstyle'
+check.dependsOn 'checkstyle', 'pmd', 'findbugs'
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')

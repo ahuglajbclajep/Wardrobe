@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'checkstyle'
 apply plugin: 'findbugs'
 
 android {
@@ -20,21 +21,34 @@ android {
     }
 }
 
-task findbugs(type: FindBugs, dependsOn: assemble) {
-    source = fileTree('src/main')
+task checkstyle(type: Checkstyle) {
+    checkstyle.toolVersion = '8.5'
     ignoreFailures = true
-    excludeFilter = file("${project.rootDir}/config/findbugs/exclude_filter.xml")
+    configFile = file("${project.rootDir}/config/checkstyle/checkstyle.xml")
 
-    classes = files('build/intermediates/classes/')
+    source = fileTree('src/main')
     classpath = files()
-    jvmArgs = ['-Duser.language=en']
     reports {
         html.enabled = true
         xml.enabled = !html.enabled
     }
 }
 
-check.dependsOn 'findbugs'
+task findbugs(type: FindBugs, dependsOn: assemble) {
+    ignoreFailures = true
+    excludeFilter = file("${project.rootDir}/config/findbugs/exclude_filter.xml")
+    jvmArgs = ['-Duser.language=en']
+
+    source = fileTree('src/main')
+    classpath = files()
+    classes = files('build/intermediates/classes/')
+    reports {
+        html.enabled = true
+        xml.enabled = !html.enabled
+    }
+}
+
+check.dependsOn 'findbugs', 'checkstyle'
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')

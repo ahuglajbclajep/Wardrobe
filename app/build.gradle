@@ -20,13 +20,14 @@ android {
     }
 }
 
-task findbugs(type: FindBugs) {
+task findbugs(type: FindBugs, dependsOn: assemble) {
     source = fileTree('src/main')
     ignoreFailures = true
     excludeFilter = file("${project.rootDir}/config/findbugs/exclude_filter.xml")
 
     classes = files('build/intermediates/classes/')
     classpath = files()
+    jvmArgs = ['-Duser.language=en']
     reports {
         html.enabled = true
         xml.enabled = !html.enabled

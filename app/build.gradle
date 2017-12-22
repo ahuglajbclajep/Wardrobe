@@ -43,7 +43,7 @@ task pmd(type: Pmd) {
     reports.xml.enabled = false
 }
 
-task findbugs(type: FindBugs, dependsOn: assemble) {
+task findbugs(type: FindBugs, dependsOn: ['compileDebugSources', 'compileReleaseSources']) {
     ignoreFailures = true
     excludeFilter = file "${rootDir}/config/findbugs/exclude_filter.xml"
     jvmArgs = ['-Duser.language=en']

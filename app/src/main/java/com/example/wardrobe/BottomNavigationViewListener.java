@@ -6,10 +6,9 @@ import android.support.design.widget.BottomNavigationView;
 import android.view.MenuItem;
 
 public class BottomNavigationViewListener implements BottomNavigationView.OnNavigationItemSelectedListener {
-    public static final int REQUEST_IMAGE_CAPTURE = 1;
-    private final CameraIntentActivity activity;
+    private final MainActivity activity;
 
-    BottomNavigationViewListener(CameraIntentActivity activity) {
+    BottomNavigationViewListener(MainActivity activity) {
         this.activity = activity;
     }
 
@@ -19,7 +18,7 @@ public class BottomNavigationViewListener implements BottomNavigationView.OnNavi
             case R.id.navigation_home:
                 Intent intent = activity.createCameraIntent();
                 if (intent != null && intent.resolveActivity(activity.getPackageManager()) != null) {
-                    activity.startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
+                    activity.startActivityForResult(intent, CameraIntentActivity.REQUEST_IMAGE_CAPTURE);
                 }
                 break;
             case R.id.navigation_dashboard:

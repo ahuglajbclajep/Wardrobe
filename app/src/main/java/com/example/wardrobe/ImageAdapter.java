@@ -13,12 +13,10 @@ import java.util.List;
 
 public class ImageAdapter extends BaseAdapter {
     private final Context context;
-    private final int resource;
     private final List<Uri> objects;
 
-    ImageAdapter(Context context, int resource, List<Uri> objects) {
+    ImageAdapter(Context context, List<Uri> objects) {
         this.context = context;
-        this.resource = resource;
         this.objects = objects;
     }
 
@@ -39,6 +37,7 @@ public class ImageAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        final int resource = R.layout.imageview;
         ImageView imageView = (ImageView) (convertView != null ? convertView : View.inflate(context, resource, null));
         Glide.with(context).load(getItem(position)).into(imageView);
         return imageView;

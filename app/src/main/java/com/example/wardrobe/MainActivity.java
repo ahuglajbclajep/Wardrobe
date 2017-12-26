@@ -1,12 +1,16 @@
 package com.example.wardrobe;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.Toast;
 
 public class MainActivity extends CameraIntentActivity {
     public static final String IMAGE_URI = "com.example.wardrobe.IMAGE_URI";
@@ -27,8 +31,15 @@ public class MainActivity extends CameraIntentActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        ImageAdapter adapter = new ImageAdapter(this, R.layout.imageview, Util.getImageList(this));
-        ((GridView) findViewById(R.id.gridView)).setAdapter(adapter);
+        GridView gridView = (GridView) findViewById(R.id.gridView);
+        gridView.setAdapter(new ImageAdapter(this, Util.getImageList(this)));
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Uri uri = (Uri) parent.getItemAtPosition(position);
+                Toast.makeText(MainActivity.this, uri.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

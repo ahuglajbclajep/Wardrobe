@@ -28,6 +28,12 @@ public class EditActivity extends CameraIntentActivity {
                 }
             }
         });
+        findViewById(R.id.saveButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditActivity.super.onBackPressed();
+            }
+        });
 
         oldImageUri = getIntent().getParcelableExtra(MainActivity.IMAGE_URI);
         Glide.with(this).load(oldImageUri).into((ImageView) findViewById(R.id.imageView));

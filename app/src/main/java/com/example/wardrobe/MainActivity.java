@@ -2,6 +2,7 @@ package com.example.wardrobe;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -10,6 +11,24 @@ import android.widget.GridView;
 
 public class MainActivity extends CameraIntentActivity {
     public static final String IMAGE_URI = "com.example.wardrobe.IMAGE_URI";
+
+    private class BottomNavigationViewListener implements BottomNavigationView.OnNavigationItemSelectedListener {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    Intent intent = createCameraIntent();
+                    if (intent != null && intent.resolveActivity(getPackageManager()) != null) {
+                        startActivityForResult(intent, CameraIntentActivity.REQUEST_IMAGE_CAPTURE);
+                    }
+                    break;
+                case R.id.navigation_dashboard:
+                    startActivity(new Intent(MainActivity.this, StartActivity.class));
+                    break;
+            }
+            return true;
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,14 +40,14 @@ public class MainActivity extends CameraIntentActivity {
         setSupportActionBar(toolbar);
 
         ((BottomNavigationView) findViewById(R.id.navigation)).setOnNavigationItemSelectedListener(
-                new BottomNavigationViewListener(this));
+                new BottomNavigationViewListener());
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        ImageAdapter adapter = new ImageAdapter(this, R.layout.imageview, Util.getImageList(this));
-        ((GridView) findViewById(R.id.gridView)).setAdapter(adapter);
+        ((GridView) findViewById(R.id.gridView)).setAdapter(
+                new ImageAdapter(this, R.layout.imageview, Util.getImageList(this)));
     }
 
     @Override

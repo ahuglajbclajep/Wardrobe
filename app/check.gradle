@@ -27,6 +27,8 @@ task pmd(type: Pmd) {
 
 task findbugs(type: FindBugs, dependsOn: ['compileDebugSources', 'compileReleaseSources']) {
     ignoreFailures = true
+    effort = 'max'
+    reportLevel = 'low'
     excludeFilter = file "${rootDir}/config/findbugs/exclude_filter.xml"
     jvmArgs = ['-Duser.language=en']
 

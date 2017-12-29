@@ -20,7 +20,8 @@ public class StartActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if (scanResult != null && scanResult.getContents() != null) {
-            startActivity(new Intent(this, MainActivity.class).putExtra(QR_CODE, scanResult.getContents()));
+            startActivity(new Intent(this, MainActivity.class)
+                    .putExtra(QR_CODE, scanResult.getContents()).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
         }
         finish();
     }

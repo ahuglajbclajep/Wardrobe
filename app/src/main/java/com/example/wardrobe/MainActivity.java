@@ -46,8 +46,8 @@ public class MainActivity extends CameraIntentActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        ImageAdapter adapter = new ImageAdapter(this, R.layout.imageview, Util.getImageList(this));
-        ((GridView) findViewById(R.id.gridView)).setAdapter(adapter);
+        ((GridView) findViewById(R.id.gridView)).setAdapter(
+                new ImageAdapter(this, R.layout.imageview, Util.getImageList(this)));
     }
 
     @Override
